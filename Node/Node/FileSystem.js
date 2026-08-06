@@ -1,73 +1,92 @@
-//File System
+//import or require file system module
+/*
+1. 
+*/
 
-const rd  = require("fs");
-const { json } = require("stream/consumers");
+const fs = require('fs');
+const data = "Hello world"
 
-//write a file
-//writeFile(filename, data, callback)
-rd.writeFile("myfile.txt","Hello MCA!", (err)=>{
+/* 1.Write a File
+const fs = require('fs');
+
+fs.writeFile("myfile.txt","HELLO WORLD",(err) => 
+{
+    if (err) throw err;
+    console.log("File has been written");
+});
+*/
+
+/*
+const fs = require('fs');
+const data = "Hello world"
+
+fs.writeFile("myfile.txt",data,(err) => 
+{
+    if (err) {
+        console.log('Error wiring file',err);
+    }
+    else {
+        console.log("File has been written");
+    }
+});
+*/
+
+
+
+//2.Read a File
+
+
+/*
+const fs = require('fs');
+const data = "Hello world"
+fs.writeFile("myfile.txt",data,(err) => 
+{
     if (err) throw err;
     console.log("File has been written");
 });
 
-
-//Second method
-//otherwise you can create object so JSON.stringify(data) hat can be used
-const data = "Hello Guys"
-rd.writeFile("myfile.txt",data, (err)=>{
-    if (err){
-        console.group("Error Writting File",err);
-        return;    
+fs.readFile("file.txt","utf8",(err,data) => 
+{
+    if(err) {
+        console.log("Error Reading File", err);
+        return;
     }
-    console.log("File has been written");
+    console.log("File Contents:", data);
+});
+*/
+
+//Write file using writeFileSync method
+/*
+fs.writeFileSync('myfile.txt',data,(err) =>
+{
+    if(err) {
+        console.log("Error Writing file",err);
+        return;
+    }
+    console.log('File has been written synchronously');
 });
 
-//Read A file
-rd.readFile("myfile.txt","utf8",(err,data)=>{
-    if (err){
-        console.group("Error reading File",err);
-        return;    
+//Write file using writeFileSync method
+
+const FileContents = fs.readFileSync("myfile.txt",'utf8');
+console.log("File Contents:",FileContents);
+*/
+
+//Append data to a file using appendFile method
+
+/*fs.appendFile("myfile.txt","\nThis is an append method",(err) => 
+{
+    if(err)
+    {
+        console.log("Error Writing file",err);
+        return;
     }
-    console.log("File content",data);
+    console.log('File has been append Successfully');
 });
 
-
-//write file using writeFileSync method
-rd.writeFileSync("myfile.txt",data, (err)=>{
-    if (err){
-        console.group("Error reading File",err);
-        return;    
-    }
-    console.log("File has been written synchronously");
-});
-
-
-//read file using readFileSync method
-rd.readFileSync("myfile.txt","utf8",(err,data)=>{
-    if (err){
-        console.group("Error reading File",err);
-        return;    
-    }
-    console.log("File content",data);
-});
-
-//Append Data to a file using appendFile Method
-rd.appendFile("myfile.txt","\nThis is an appended  \nHello MCA!",(err)=>{
-    if (err){
-        console.group("File appending file",err);
-        return;    
-    }
-    console.log("File has benn appended");
-});
-
-rd.readFile("myfile.txt","utf8",(err,data)=>{
-    if (err){
-        console.group("Error reading File",err);
-        return;    
-    }
-    console.log("File content",data);
-});
-
+const FileContents = fs.readFileSync("myfile.txt",'utf8');
+console.log("File Contents:",FileContents);
+*/
 
 //appendFileSync method
 fs.appendFileSync("myfile.txt","\nThis is an Asynchronous method for append");
